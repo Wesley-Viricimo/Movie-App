@@ -63,26 +63,26 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
 
-    // Coil
+    // Coil -> Dependência para exibir as imagens
     implementation "io.coil-kt:coil-compose:2.2.2"
 
-    //Timber
+    //Timber -> Dependência para exibição de logs
     implementation "com.jakewharton.timber:timber:5.0.1"
 
-    //DataStore
+    //DataStore -> Dependência para armazenar informações mais leves sem precisar utilizar o room
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
-    // Splashscreen
+    // Splashscreen -> Dependência para utilizar splashscreen na aplicação
     implementation "androidx.core:core-splashscreen:1.0.0"
 
-    //Gson
+    //Gson -> Dependência para manipulação de dados utilizando JSON
     implementation "com.google.code.gson:gson:2.10"
 
     // Others - Compose dependencies
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
     implementation "androidx.compose.material:material-icons-extended:1.4.0"
     implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
-    implementation "androidx.navigation:navigation-compose:2.5.3"
+    implementation "androidx.navigation:navigation-compose:2.5.3" //Dependência para utilização de navegação
 
     // Paging3
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
