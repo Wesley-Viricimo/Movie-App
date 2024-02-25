@@ -26,6 +26,7 @@ android {
         buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
         buildConfigField "String", "BASE_URL", apiKeyProperties['BASE_URL']
         buildConfigField "String", "BASE_URL_IMAGE", apiKeyProperties['BASE_URL_IMAGE']
+        buildConfigField "String", "JWT_TOKEN", apiKeyProperties['JWT_TOKEN']
 
         vectorDrawables {
             useSupportLibrary true
