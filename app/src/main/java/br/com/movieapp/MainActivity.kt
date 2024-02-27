@@ -14,7 +14,7 @@ import br.com.movieapp.ui.theme.MovieAppTheme
 
 class MainActivity : ComponentActivity() {
 
-    val apiKey = BuildConfig.API_KEY
+    val apiKey = BuildConfig.JWT_TOKEN
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
