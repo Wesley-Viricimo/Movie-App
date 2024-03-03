@@ -1,4 +1,4 @@
-package br.com.movieapp.framework.util
+package br.com.movieapp.core.util
 
 import timber.log.Timber
 

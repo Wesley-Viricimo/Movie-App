@@ -1,4 +1,4 @@
-package br.com.movieapp.framework.util
+package br.com.movieapp.core.util
 
 sealed class ResultData<out T> { //Classe irá representar os diferentes estados das operações que serão realizadas
 
