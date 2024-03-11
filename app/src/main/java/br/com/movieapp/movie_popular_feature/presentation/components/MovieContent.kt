@@ -12,8 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import br.com.movieapp.core.domain.model.Movie
+import br.com.movieapp.core.presentation.components.common.LoadingView
 
 @Composable
 fun MovieContent(
@@ -41,6 +43,15 @@ fun MovieContent(
                             onclick(movieId)
                         }
                     )
+                }
+            }
+            pagingMovies.apply {
+                when {
+                    loadState.refresh is LoadState.Loading -> { //Verifica se novos estados (itens) estão sendo buscados
+                        item {
+                            LoadingView()
+                        }
+                    }
                 }
             }
         }
