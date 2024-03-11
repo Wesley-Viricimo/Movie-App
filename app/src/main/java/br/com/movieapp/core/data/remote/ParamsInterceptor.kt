@@ -12,11 +12,11 @@ class ParamsInterceptor : Interceptor {
         val request = chain.request() //Obtendo requisição original
         val url = request.url.newBuilder()
             .addQueryParameter(Constants.LANGUAGE_PARAM, Constants.LANGUAGE_VALUE)
-            .addQueryParameter(Constants.API_TOKEN_PARAM, BuildConfig.JWT_TOKEN)
             .build()
 
         val newRequest = request.newBuilder()
             .url(url)
+            .addHeader(Constants.API_TOKEN_PARAM, BuildConfig.JWT_TOKEN)
             .build()
 
         return chain.proceed(newRequest)
