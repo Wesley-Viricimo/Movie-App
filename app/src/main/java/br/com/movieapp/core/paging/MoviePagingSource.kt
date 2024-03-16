@@ -40,6 +40,6 @@ class MoviePagingSource constructor(
     }
 
     companion object {
-        private const val LIMIT = 20
+        internal const val LIMIT = 20
     }
 }
