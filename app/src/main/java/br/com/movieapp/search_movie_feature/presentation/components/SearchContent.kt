@@ -12,6 +12,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -34,6 +38,9 @@ fun SearchContent(
     onEvent: (MovieSearchEvent) -> Unit,
     onDetail: (movieId: Int) -> Unit
 ) {
+
+    var isLoading by remember { mutableStateOf(false) } //Armazena o valor de um componente específico durante tod-o seu ciclo de vida
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -43,7 +50,8 @@ fun SearchContent(
         SearchComponent(
             query = query,
             onSearch = {
-                       onSearch(it)
+                isLoading = true //Quando buscar o filme, a circular progress indicator irá iniciar
+                onSearch(it)
             },
             onQueryChangeEvent = {
                 onEvent(it)
@@ -75,11 +83,12 @@ fun SearchContent(
                         }
                     )
                 }
+                isLoading = false
             }
 
             pagingMovies.apply {  //Aplicando paginação nos itens retornados
                 when {
-                    loadState.refresh is LoadState.Loading -> { //Verifica se novos estados (itens) estão sendo buscados
+                    isLoading -> { //Verifica se novos estados (itens) estão sendo buscados
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan) //Através dessa instrução conseguimos configurar o número de colunas que o load view ocupa dentro da grade
@@ -89,7 +98,8 @@ fun SearchContent(
                         }
                     }
 
-                    loadState.append is LoadState.Loading -> { //Se a lista está em processamento de carregamento
+                    /*loadState.append is LoadState.Loading -> { //Se a lista está em processamento de carregamento
+                        isLoading = false
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan) //Através dessa instrução conseguimos configurar o número de colunas que o load view ocupa dentro da grade
@@ -97,9 +107,10 @@ fun SearchContent(
                         ) {
                             LoadingView()
                         }
-                    }
+                    }*/
 
                     loadState.refresh is LoadState.Error -> {
+                        isLoading = false
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan) //Através dessa instrução conseguimos configurar o número de colunas que o load view ocupa dentro da grade
@@ -113,6 +124,7 @@ fun SearchContent(
                         }
                     }
                     loadState.append is LoadState.Error -> {
+                        isLoading = false
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan) //Através dessa instrução conseguimos configurar o número de colunas que o load view ocupa dentro da grade
