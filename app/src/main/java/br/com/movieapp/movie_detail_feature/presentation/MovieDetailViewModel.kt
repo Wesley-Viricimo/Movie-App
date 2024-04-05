@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
+import br.com.movieapp.core.domain.model.Movie
 import br.com.movieapp.core.util.ResultData
 import br.com.movieapp.core.util.UtilFunctions
 import br.com.movieapp.movie_detail_feature.domain.usecase.GetMovieDetailUseCase
@@ -37,6 +37,14 @@ class MovieDetailViewModel @Inject constructor(
 
     fun getMovieDetail(getMovieDetail: MovieDetailsEvent.GetMovieDetail) {
         event(getMovieDetail)
+    }
+
+    fun onAddFavorite(movie: Movie) {
+        if (uiState.iconColor == Color.White) {
+            event(MovieDetailsEvent.AddFavorite(movie = movie))
+        } else {
+            event(MovieDetailsEvent.RemoveFavorite(movie = movie))
+        }
     }
 
     private fun event(event: MovieDetailsEvent) { //Recebendo evento como parâmetro
