@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.movieapp.ui.theme.black
@@ -47,7 +48,12 @@ fun BottomNavigationBar(
             )
         }
     }
+}
 
+@Composable
+fun currentRoute(navController: NavHostController): String? {
+    val navBackStackEntry by navController.currentBackStackEntryAsState() //Propriedade que representa a entrada atual da pilha de navegação, contém as informações da rota atual que o usuário está acessando
+    return navBackStackEntry?.destination?.route //Retorna a rota de navegação atual
 }
 
 @Preview
