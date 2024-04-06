@@ -10,6 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.R
 import br.com.movieapp.core.domain.model.Movie
+import br.com.movieapp.core.presentation.components.common.MovieAppBar
 import br.com.movieapp.movie_detail_feature.presentation.components.MovieDetailsContent
 import br.com.movieapp.movie_detail_feature.presentation.state.MovieDetailState
 import br.com.movieapp.ui.theme.black
@@ -25,14 +26,8 @@ fun MovieDetailScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = R.string.detail_movie),
-                        color = white
-                    )
-                },
-                backgroundColor = black
+            MovieAppBar(
+                title = R.string.detail_movie
             )
         },
         content = {
