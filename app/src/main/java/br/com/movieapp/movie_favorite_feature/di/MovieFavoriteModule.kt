@@ -11,6 +11,7 @@ import br.com.movieapp.movie_favorite_feature.domain.usecase.DeleteMovieFavorite
 import br.com.movieapp.movie_favorite_feature.domain.usecase.DeleteMovieFavoriteUseCaseImpl
 import br.com.movieapp.movie_favorite_feature.domain.usecase.GetMoviesFavoriteUseCase
 import br.com.movieapp.movie_favorite_feature.domain.usecase.GetMoviesFavoriteUseCaseImpl
+import br.com.movieapp.movie_favorite_feature.domain.usecase.IsMovieFavoriteUseCase
 import br.com.movieapp.movie_favorite_feature.domain.usecase.IsMovieFavoriteUseCaseImpl
 import dagger.Module
 import dagger.Provides
@@ -54,7 +55,7 @@ object MovieFavoriteModule {
 
     @Provides
     @Singleton
-    fun provideIsMovieFavoriteUseCase(movieFavoriteRepository: MovieFavoriteRepository) : IsMovieFavoriteUseCaseImpl {
+    fun provideIsMovieFavoriteUseCase(movieFavoriteRepository: MovieFavoriteRepository) : IsMovieFavoriteUseCase {
         return IsMovieFavoriteUseCaseImpl(movieFavoriteRepository = movieFavoriteRepository)
     }
 }
