@@ -18,20 +18,10 @@ import br.com.movieapp.ui.theme.white
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MovieDetailScreen(
-    id: Int?,
     uiState: MovieDetailState,
-    onAddFavorite: (Movie) -> Unit,
-    checkedFavorite: (MovieDetailsEvent.CheckedFavorite) -> Unit,
-    getMovieDetail: (MovieDetailsEvent.GetMovieDetail) -> Unit
+    onAddFavorite: (Movie) -> Unit
 ) {
     val pagingMoviesSimilar = uiState.results.collectAsLazyPagingItems()
-
-    LaunchedEffect(key1 = true) {//Cria um fluxo assíncrono(paralelo) para buscar o detalhe do filme, a chave key1 quando recebe o valor true garante que o bloco de código executado abaixo será executado quando quando a função movie detail screen for chamada
-        if (id != null) {
-            getMovieDetail(MovieDetailsEvent.GetMovieDetail(id))
-            checkedFavorite(MovieDetailsEvent.CheckedFavorite(id))
-        }
-    }
 
     Scaffold(
         topBar = {
